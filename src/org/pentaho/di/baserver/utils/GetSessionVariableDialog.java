@@ -56,7 +56,8 @@ public class GetSessionVariableDialog extends BAServerCommonDialog<GetSessionVar
         BaseMessages.getString(PKG, "GetSessionVariableDialog.Column.DefaultValue" ),
         ColumnInfo.COLUMN_TYPE_TEXT, false );
     defaultValueColumn.setUsingVariables( true );
-    defaultValueColumn.setToolTip( BaseMessages.getString( PKG, "GetSessionVariableDialog.Column.DefaultValue.Tooltip" ) );
+    defaultValueColumn.setToolTip(
+        BaseMessages.getString( PKG, "GetSessionVariableDialog.Column.DefaultValue.Tooltip" ) );
     wFields = new TableViewBuilder( props, parent, variables )
         .addColumnInfo(fieldColumn )
         .addColumnInfo(variableColumn )
@@ -102,9 +103,22 @@ public class GetSessionVariableDialog extends BAServerCommonDialog<GetSessionVar
     for ( int i = 0; i < count; i++ ) {
       TableItem item = wFields.getNonEmpty( i );
       int index = 0;
-      meta.getFieldName()[ i ] = item.getText( ++index );
-      meta.getVariableName()[ i ] = item.getText( ++index );
-      meta.getDefaultValue()[ i ] = item.getText( ++index );
+
+      String[] fieldName = meta.getFieldName();
+      fieldName[ i ] = item.getText( ++index );
+      meta.setFieldName( fieldName );
+
+      String[] variableName = meta.getVariableName();
+      variableName[ i ] = item.getText( ++index );
+      meta.setVariableName( variableName );
+
+      String[] defaultValue = meta.getDefaultValue();
+      defaultValue[ i ] = item.getText( ++index );
+      meta.setDefaultValue( defaultValue );
+
+//      meta.getFieldName()[ i ] = item.getText( ++index );
+//      meta.getVariableName()[ i ] = item.getText( ++index );
+//      meta.getDefaultValue()[ i ] = item.getText( ++index );
     }
   }
 

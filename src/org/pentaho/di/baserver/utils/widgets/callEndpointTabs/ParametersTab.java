@@ -110,9 +110,22 @@ public class ParametersTab extends Tab {
     for ( int i = 0; i < count; i++ ) {
       TableItem item = queryParameters.getNonEmpty( i );
       int index = 0;
-      meta.getFieldName()[ i ] = item.getText( ++index );
-      meta.getParameter()[ i ] = item.getText( ++index );
-      meta.getDefaultValue()[ i ] = item.getText( ++index );
+
+      String[] fieldName = meta.getFieldName();
+      fieldName[ i ] = item.getText( ++index );
+      meta.setFieldName( fieldName );
+
+      String[] variableName = meta.getParameter();
+      variableName[ i ] = item.getText( ++index );
+      meta.setParameter( variableName );
+
+      String[] defaultValue = meta.getDefaultValue();
+      defaultValue[ i ] = item.getText( ++index );
+      meta.setDefaultValue( defaultValue );
+
+//      meta.getFieldName()[ i ] = item.getText( ++index );
+//      meta.getParameter()[ i ] = item.getText( ++index );
+//      meta.getDefaultValue()[ i ] = item.getText( ++index );
     }
   }
 }
